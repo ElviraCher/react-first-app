@@ -15,6 +15,6 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "import/no-unresolved": "off",
-    "import/extensions":["warn", "never"],
+    "import/extensions": ["warn", "never"],
   },
 };
