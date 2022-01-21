@@ -1,0 +1,10 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 29rem 17rem 29rem;
+    grid-template-areas:
+            "h h h"
+            "m m s"
+            "f f f";
+}
