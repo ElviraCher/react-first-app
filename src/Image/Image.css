@@ -1,0 +1,8 @@
+.image {
+    max-width: 100%;
+    grid-area: s;
+    margin: 1rem 0;
+    justify-self: end;
+    align-self: center;
+}
+
