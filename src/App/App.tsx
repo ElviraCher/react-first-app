@@ -2,86 +2,117 @@ import React, { useState } from "react";
 
 import ReactDOM from "react-dom";
 
-import { Header }  from "../Header/Header.tsx";
-import { Paragraph } from "../Paragraph/Paragraph.tsx"
+import { Header } from "../Header/Header.tsx";
+import { Paragraph } from "../Paragraph/Paragraph.tsx";
 import { Column } from "../Column/Column.tsx";
-import {SpaceBlock} from "../SpaceBlock/SpaceBlock.tsx";
-import {Image} from "../Image/Image.tsx";
-import {CollapsingBlock} from "../CollapsingBlock/CollapsingBlock.tsx";
+import { SpaceBlock } from "../SpaceBlock/SpaceBlock.tsx";
+import { Image } from "../Image/Image.tsx";
+import { CollapsingBlock } from "../CollapsingBlock/CollapsingBlock.tsx";
 
-import "./App.css"
+import "./App.css";
 
-export function App(){
-  const text =
-      `Я откланялся. Урядник привел меня в избу, стоявшую на высоком берегу реки,
-     на самом краю крепости. Половина избы занята была семьею Семена Кузова,
-      другую отвели мне. Она состояла из одной горницы довольно опрятной, разделенной
-       надвое перегородкой. Савельич стал в ней распоряжаться; я стал глядеть в узенькое окошко.
-        Передо мною простиралась печальная степь. Наискось стояло несколько избушек; по улице
-         бродило несколько куриц. Старуха, стоя на крыльце с корытом, кликала свиней, которые
-          отвечали ей дружелюбным хрюканьем. И вот в какой стороне осужден я был проводить
-           мою молодость! Тоска взяла меня; я отошел от окошка и лег спать без ужина, несмотря
-            на увещания Савельича, который повторял с сокрушением: «Господи владыко! ничего кушать
-             не изволит! Что скажет барыня, коли дитя занеможет?»`;
+function SmartComponent() {
+  const [headerText, setHeaderText] = useState("");
+  const [headerSize, setHeaderSize] = useState("");
+  const [paragraphStyle, setParagraphStyle] = useState("normal");
+  const [collapsingBlockText, setCollapsingBlockText] = useState("");
+  const [paragraphText, setParagraphText] = useState("");
+  const [isShown, setIsShown] = useState(true);
+  const [columnCount, setColumnCount] = useState("");
+  const [columnContent, setColumnContent] = useState([]);
 
-  const columnContent = [
-    "Подходя к комендантскому дому, мы увидели на площадке человек двадцать стареньких инвалидов с длинными косами и в треугольных шляпах.",
-    "Впереди стоял комендант, старик бодрый и высокого росту, в колпаке и в китайчатом халате.",
-    "Мы остановились было смотреть на учение; но он просил нас идти к Василисе Егоровне, обещаясь быть вслед за нами. «А здесь, — прибавил он, — нечего вам смотреть».",
-    "Мы сели обедать. Василиса Егоровна не умолкала ни на минуту и осыпала меня вопросами: кто мои родители, живы ли они, где живут и каково их состояние? Услыша, что у батюшки триста душ крестьян, «легко ли! — сказала она, — ведь есть же на свете богатые люди! А у нас, мой батюшка, всего-то душ одна девка Палашка; да слава богу, живем помаленьку.",
-    "Прошло несколько недель, и жизнь моя в Белогорской крепости сделалась для меня не только сносною, но даже и приятною. В доме коменданта был я принят как родной."
-  ]
-
-  let headerSize = "Введите размер заголовка";
-  const headerText = "Введите текст заголовка";
-  const columnCount = "Введите количество колонок";
+  const [imageAtThePage, setImageAtThePage] = useState(false);
 
   function finishPrompt(data: string) {
     return data;
   }
 
-  function checkPrompt(callback: (data: string) => string, promptMessage: string | null) {
+  function checkPrompt(
+    callback: (data: string) => string,
+    promptMessage: string | null
+  ) {
     let x = prompt(`${promptMessage}`);
 
     while (x === null) {
       x = checkPrompt(finishPrompt, promptMessage);
     }
-
     return callback(x);
   }
 
-  const size = checkPrompt(finishPrompt, headerSize);
-  const header = checkPrompt(finishPrompt, headerText);
-  const count = checkPrompt(finishPrompt, columnCount);
+  const headerSizePrompt = "Введите размер заголовка";
+  const headerTextPrompt = "Введите текст заголовка";
+  const paragraphStylePrompt =
+    "Введите стиль параграфа. Доступные варианты: italic, bold, normal";
+  const paragraphTextPrompt = "Введите текст параграфа";
+  const columnsCountPrompt = "Сколько колонок будет на странице?";
+  const columnsContentPrompt = "Введите текст колонки";
 
+  const headerHandler = () => {
+    const size = checkPrompt(finishPrompt, headerSizePrompt);
+    const header = checkPrompt(finishPrompt, headerTextPrompt);
+    setHeaderText(header);
+    setHeaderSize(size);
+  };
+  const headerClick = () => {
+    setIsShown(!isShown);
+  };
 
+  const collapsingBlockHandler = () => {
+    const text = checkPrompt(finishPrompt, paragraphTextPrompt);
+    setCollapsingBlockText(text);
+  };
 
-
-  function App2(){
-    const [isShown, setIsShown] = useState(true);
-
-    const headerClick = () => {
-      setIsShown(!isShown);
+  const columnHandler = () => {
+    const count = checkPrompt(finishPrompt, columnsCountPrompt);
+    let content;
+    let contentArray = [...columnContent];
+    let c = +count;
+    for (let i = c; i > 0; i -= 1) {
+      content = checkPrompt(finishPrompt, columnsContentPrompt);
+      contentArray = [...contentArray, content];
     }
+    setColumnCount(count);
+    setColumnContent(contentArray);
+  };
 
-    return (
-        <React.StrictMode>
-          <div className="container">
-            <Header size={size} text={header} headerClick={headerClick}/>
-              <CollapsingBlock text="Схлопывающийся блок. По идее должен схлопнутся при нажатии на заголовок"  isShawn={isShown}/>
-              <SpaceBlock/>
-              <Column columnCount = {count} columnContent = {columnContent} paragraphTextStyle="italic"/>
-              <Paragraph textStyle="bold" text={text}/>
-              <Image/>
-          </div>
-        </React.StrictMode>
-    );
-  }
+  const paragraphHandler = () => {
+    const style = checkPrompt(finishPrompt, paragraphStylePrompt);
+    const text = checkPrompt(finishPrompt, paragraphTextPrompt);
+    setParagraphStyle(style);
+    setParagraphText(text);
+  };
+
+  const imageHandler = () => {
+    setImageAtThePage(!imageAtThePage);
+  };
 
   return (
-      <>
-        <App2/>
-      </>
-  )
+    <>
+      <button onClick={headerHandler}>Установить заголовок</button>
+      <button onClick={collapsingBlockHandler}>
+        Добавить схлопывающийся блок
+      </button>
+      <button onClick={paragraphHandler}>Добавить параграф</button>
+      <button onClick={columnHandler}>Добавить колонки</button>
+      <button onClick={imageHandler}>
+        {imageAtThePage ? "Убрать картинку" : "Добавить картинку"}
+      </button>
+      <Header size={headerSize} text={headerText} headerClick={headerClick} />
+      <CollapsingBlock text={collapsingBlockText} isShawn={isShown} />
+      <Paragraph textStyle={paragraphStyle} text={paragraphText} />
+      <Column
+        columnCount={columnCount}
+        columnContent={columnContent}
+        paragraphTextStyle={paragraphStyle}
+      />
+      <SpaceBlock />
+      <>{imageAtThePage ? <Image /> : null}</>
+    </>
+  );
 }
+
+function App() {
+  return <SmartComponent />;
+}
+
 ReactDOM.render(<App />, document.getElementById("app"));
