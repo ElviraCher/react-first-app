@@ -1,7 +1,6 @@
 .header {
-    grid-area: h;
-    align-self: end;
-    justify-self: center;
-    margin-bottom: 3rem;
-
+  grid-area: h;
+  align-self: end;
+  justify-self: center;
+  margin-bottom: 3rem;
 }

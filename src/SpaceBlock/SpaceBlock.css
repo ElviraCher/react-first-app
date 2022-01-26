@@ -1,12 +1,16 @@
 .space-block {
-    grid-area: m / h / m /h;
-    align-self: end;
-    margin: 2rem 0;
+  grid-area: m / h / m / h;
+  align-self: end;
+  margin: 2rem 0;
 }
 
 hr {
-    border: 0;
-    height: 0.2rem;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), seagreen, rgba(0, 0, 0, 0));
+  border: 0;
+  height: 0.2rem;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    seagreen,
+    rgba(0, 0, 0, 0)
+  );
 }
-

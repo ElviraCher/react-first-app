@@ -1,14 +1,14 @@
 .column-container {
-    margin: 2rem;
-    grid-area: m;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
+  margin: 2rem;
+  grid-area: m;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .column {
-    padding: 1.5rem;
-    max-width: 35%;
-    min-width: 30%;
+  padding: 1.5rem;
+  max-width: 35%;
+  min-width: 30%;
 }
