@@ -1,14 +1,24 @@
 .column-container {
-  margin: 2rem;
-  grid-area: m;
+  margin: 0 2rem;
+  grid-area: f;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .column {
   padding: 1.5rem;
-  max-width: 35%;
-  min-width: 30%;
+  max-width: 43%;
+  min-width: 20rem;
+  align-self: stretch;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  margin: 1rem 0;
+  background-color: wheat;
+}
+
+.column-header {
+  margin: 0 auto;
+  padding-bottom: 1rem;
 }
