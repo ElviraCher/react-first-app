@@ -1,7 +1,6 @@
 .space-block {
-  grid-area: m / h / m / h;
-  align-self: end;
-  margin: 2rem 0;
+  grid-area: s;
+  align-self: start;
 }
 
 hr {
@@ -10,7 +9,7 @@ hr {
   background-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0),
-    seagreen,
+    lightcoral,
     rgba(0, 0, 0, 0)
   );
 }
