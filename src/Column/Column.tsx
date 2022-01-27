@@ -12,7 +12,7 @@ export function Column(props: columnProps) {
   const columnCount: number[] = Array(+props.columnCount).fill(undefined);
   const listItems = columnCount.map((column, index) => (
     <div key={index} className="column">
-      <h5>Это колонка №{index + 1}</h5>
+      <h4 className="column-header">Заголовок колонки №{index + 1}</h4>
       <Paragraph
         textStyle={props.paragraphTextStyle}
         text={props.columnContent[index]}
