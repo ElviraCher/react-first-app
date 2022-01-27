@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 
 import { SmartComponent } from "../SmartComponent/SmartComponent.tsx";
 
-
 function App() {
   return <SmartComponent />;
 }
