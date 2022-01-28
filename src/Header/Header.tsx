@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export function Header(props: HeaderProps) {
-  let size = Math.round(+props.size).toString();
+  const size = props.size;
 
   switch (size) {
     case "1":
