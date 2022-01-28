@@ -1,0 +1,25 @@
+.image {
+  max-width: 100%;
+  border: 0.2rem solid rgba(27, 31, 35, 0.15);
+  border-radius: 0.6rem;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 0.1rem 0,
+    rgba(255, 255, 255, 0.25) 0 0.1rem 0 inset;
+  box-sizing: border-box;
+  background-color: rgba(222, 133, 118, 0.79);
+}
+
+.left {
+  float: left;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.right {
+  float: right;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.none {
+  float: none;
+}

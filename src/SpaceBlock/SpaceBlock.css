@@ -1,0 +1,15 @@
+.space-block {
+  grid-area: s;
+  align-self: start;
+}
+
+hr {
+  border: 0;
+  height: 0.2rem;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    lightcoral,
+    rgba(0, 0, 0, 0)
+  );
+}

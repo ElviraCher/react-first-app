@@ -1,0 +1,85 @@
+.container {
+  max-width: 85%;
+  display: grid;
+  grid-template-areas:
+    "b b b"
+    "h h h"
+    "m m m"
+    "s s s"
+    "f f f";
+  gap: 3rem;
+  background-color: lightgoldenrodyellow;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+}
+
+.button-container {
+  grid-area: b;
+  justify-self: center;
+  align-self: start;
+  padding: 2rem;
+  width: 100%;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  background-color: rgba(222, 133, 118, 0.79);
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292e;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 0.7rem;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  margin: 0 0.5rem;
+}
+
+.button:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+
+.button:first-child {
+  margin-left: 0;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.main {
+  grid-area: m;
+  width: 90%;
+  max-width: 55rem;
+  margin: 0 auto;
+}
+
+.header-container {
+  grid-area: h;
+  align-self: start;
+  justify-self: center;
+  margin: 0 10rem;
+  font-family: monospace;
+  color: #9b6c60;
+  text-align: center;
+  font-size: 1.9rem;
+}

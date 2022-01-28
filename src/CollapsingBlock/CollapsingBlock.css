@@ -1,0 +1,5 @@
+.collapsing-block {
+  grid-area: h;
+  justify-self: center;
+  align-self: end;
+}
