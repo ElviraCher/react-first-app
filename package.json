@@ -63,7 +63,8 @@
     "webpack-dev-server": "^4.7.3"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "*.{js, .tsx, .ts}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,json,scss,less,css,md,yml,yaml}": "prettier --write"
   },
   "dependencies": {
     "@types/react": "^17.0.38",
